@@ -1,0 +1,17 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	make actduino_bubble_gum_v10_defconfig
+
+override_dh_auto_build:
+	dh_auto_build -- all u-boot-dtb.img
+
+override_dh_auto_test:
+	# skip tests.
+
+override_dh_clean:
+	rm -rf debian/build/
+	dh_clean

@@ -1,0 +1,890 @@
+u-boot-atm7059a (2015.04.atm7059a) unstable; urgency=low
+
+  * init for atm7059a
+
+ -- Ying-Chun Liu (PaulLiu) <paulliu@debian.org>  Sun, 02 Aug 2015 00:58:12 +0800
+
+u-boot (2015.04+dfsg1-2) unstable; urgency=medium
+
+  [ Joost van Zwieten ]
+  * u-boot-exynos: Enable odroid target.
+
+  [ Vagrant Cascadian ]
+  * u-boot-imx/mx6cuboxi:
+    + Add patches to enable HDMI and USB support.
+    + Add patches to fix Ethernet PHY detection.
+  * u-boot-imx/wandboard: Add patch from u-boot-imx to build a single SPL
+    target for all variants.
+
+  [ Robert Nelson ]
+  * u-boot-omap: Include u-boot.img instead of u-boot.bin for igep0020,
+    omap3_beagle and omap4_panda.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Mon, 25 May 2015 20:36:37 -0700
+
+u-boot (2015.04+dfsg1-1) experimental; urgency=medium
+
+  [ Ian Campbell ]
+  * u-boot-exynos: Fix conflict between arndale and sunxi spl
+    targets.
+  * u-boot-sunxi: Update sunxi FEL target.
+
+  [ Vagrant Cascadian ]
+  * u-boot-imx:
+    + Add usbarmory target.
+    + Add novena target.
+    + Add patches from u-boot-imx to support Cubox-i and Hummingboard and
+      drop old cubox-i patches.
+    + Add mx6cuboxi target.
+    + mx6cuboxi: Add patch to use config_distro_bootcmd.
+    + wandboard: Add patch to use config_distro_bootcmd and remove old
+      environment patches.
+    
+  * u-boot-omap:
+    + am335x_boneblack: Remove patch to set voltage.
+    + am335x_boneblack: Add patch to use config_distro_bootcmd and remove
+      old patches.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Mon, 27 Apr 2015 14:54:44 -0700
+
+u-boot (2015.04~rc5+dfsg1-1) experimental; urgency=medium
+
+  [ John Paul Adrian Glaubitz ]
+  * [sh4] Fix FTBFS due to incorrect target names (Closes: #780066).
+
+  [ Vagrant Cascadian ]
+  * [armel] Use "rpi" for the Raspberry pi target, as it was renamed
+    upstream.
+  * [armel] Remove openrd_ultimate target, which fails to build upstream.
+  * [armel] Remove obsolete mmc guruplug and openrd patches.
+  * [armhf] Remove arndale patches, applied upstream.
+  * Fix cross-building of u-boot-tools (Closes: #775614).
+  * [armhf] u-boot-sunxi: Enable A20-OLinuXino_MICRO. Thanks to Arne
+    Ploese for testing!
+  * [armhf] u-boot-sunxi: Enable Linksprite_pcDuino3. Thanks to Patrice Go
+    for testing!
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Tue, 07 Apr 2015 13:58:39 -0700
+
+u-boot (2015.04~rc3+dfsg1-1) experimental; urgency=medium
+
+  * New upstream release candidate.
+  * Remove patches applied upstream:
+    - ti_armv7_common-support_raw_initrd.diff
+  * Refresh patches:
+    - cubox-i/cubox-i-support.diff
+    - mipsel-native-endianness.diff
+    - mx53loco
+    - openrd-mmc.diff
+    - series
+    - wandboard/wandboard-uEnv.txt-bootz-n-fixes.patch
+    - guruplug_mvfs_and_mmc.diff
+  * Add patch to enable USB mass-storage support for the BeagleBone Black:
+    - beagleboneblack/usb-mass-storage.patch
+  * debian/rules: Add get-orig-source target.
+
+  * Disable patches that fail to apply:
+    - cubox-i/imx6-spl-support.diff
+    - arndale/exynos-Enable-config_distro_defaults.h.patch
+    - arndale/exynos5-Use-config_distro_bootcmd.h.patch
+  * Disable cubox-i build target and patches, as it fails to build.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Sun, 08 Mar 2015 12:15:59 -0700
+
+u-boot (2014.10+dfsg1-5) unstable; urgency=medium
+
+  [ John Paul Adrian Glaubitz ]
+  * [sh4] Fix FTBFS due to incorrect target names (Closes: #780066).
+
+  [ Vagrant Cascadian ]
+  * [armhf] u-boot-sunxi: Enable A20-OLinuXino_MICRO. Thanks to Arne
+    Ploese for testing!
+  * [armhf] u-boot-sunxi: Enable Linksprite_pcDuino3. Thanks to Patrice Go
+    for testing!
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Tue, 07 Apr 2015 13:42:30 -0700
+
+u-boot (2014.10+dfsg1-4) unstable; urgency=medium
+
+  [ Karsten Merker ]
+  * Backport support for the LeMaker Banana Pro board (Closes: #779908).
+
+  [ Vagrant Cascadian ]
+  * Update lintian rules for BananaPro and A20-OlinuXino-LIME2.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Sun, 08 Mar 2015 11:13:07 -0700
+
+u-boot (2014.10+dfsg1-3) unstable; urgency=medium
+
+  * cubox-i-support.diff: Refresh patch, dropping solidrun.bmp, which
+    causes FTBFS with newer version of patch (Closes: #777518).
+
+  * Add patch to support A20-OLinuXino-LIME2, backported from u-boot
+    2015.01. Thanks to Karsten Merker for the patch (Closes: #777466).
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Sat, 21 Feb 2015 13:13:31 -0800
+
+u-boot (2014.10+dfsg1-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * debian/patches:
+    - Add sh4-fix-linker-name-prefix.patch to use the proper
+      linker name prefix on sh4. Fixes FTBFS. (Closes: #771747)
+
+ -- John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>  Thu, 11 Dec 2014 00:00:08 +0100
+
+u-boot (2014.10+dfsg1-2) unstable; urgency=medium
+
+  [ Steve Langasek ]
+  * Resync cubox-i patches with github.
+    - fixes support for booting on the cubox-i2ultra/i2ex.
+      (Closes: #766266)
+  
+  [ Vagrant Cascadian ]
+  * wandboard, cubox-i: Add patches to use variables expected by
+    debian-installer bootscript.
+  * cubox-i: Move importing bootenv before loading the boot script, to
+    allow environment variables useful to the boot script to be set.
+  * cubox-i: Run autodetectfdt before attempting to load the boot script.
+  * Split README.Debian by subarchitecture, and document installing u-boot
+    on several additional boards.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Sat, 01 Nov 2014 16:33:33 -0700
+
+u-boot (2014.10+dfsg1-1) unstable; urgency=medium
+
+  [ Vagrant Cascadian ]
+  * New upstream release.
+  * Refresh cubox-i patches to 2014.10.
+  * Update cubox-i patches to use generic board.
+  * Remove debian/patches/kerma-sheevaplug-mvsata.diff, merged upstream.
+  * Patch to allow tools-only to build without a configuration.
+  * Update Standards-Version to 3.9.6, no changes needed.
+
+  [ Ian Campbell ]
+  * Rebase arndale patches onto 2014.10
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Sun, 19 Oct 2014 11:34:39 -0700
+
+u-boot (2014.10~rc3+dfsg1-2) experimental; urgency=medium
+
+  [ Ian Campbell ]
+  * Add support for the Arndale board (Closes: #763186).
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Thu, 09 Oct 2014 11:41:31 -0700
+
+u-boot (2014.10~rc3+dfsg1-1) unstable; urgency=medium
+
+  * New upstream release candidate.
+  * Remove patches applied upstream:
+    - bootcmd-scsi-scan-before-scsi.patch
+    - sunxi/0001-sun7i-Add-support-for-Olimex-A20-OLinuXino-LIME.patch
+  * Refresh patches:  
+    - am335x-bootscript.diff
+    - am335x-uenv.txt.diff
+    - cubox-i/cubox-i-support.diff
+    - no-force-CROSS_COMPILE-powerpc.diff
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Wed, 08 Oct 2014 09:57:35 -0700
+
+u-boot (2014.10~rc2+dfsg1-2) unstable; urgency=medium
+
+  [ Héctor Orón Martínez ]
+  * Fix cross building.
+  * Build extra tools for kirkwood and sunxi (Closes: #750108).
+  * Build extra tools and env just once, and install in PATH again.
+  * Add nitrogen6q support to u-boot-imx.
+
+  [ Vagrant Cascadian ]
+  * Use "make all" instead of making individual targets, recording a list
+    of targets to install in each subarch package.
+  * Build FEL variants for all sunxi platforms, based on patches from Ian
+    Campbell.
+  * Add build-depends on "bc".
+  * Patch to add the debian revision to the U-boot version.
+  * Updated cubox-i patches and re-enable mx6_cubox-i target.
+  * Build tools and env with NO_SDL=1 to avoid complaining about missing
+    sdl-config.
+  * Remove mips target dbau1100, an old platform with no testers.
+  * Swich qemu_mips target to install u-boot.bin, which is what is
+    actually needed by qemu.
+  * Add patch to Set DCDC1 DDR3 to 1.35V for Beaglebone Black. Thanks to
+    Robert Nelson for the patch.
+
+  [ Ian Campbell ]
+  * Add patch to add u-boot.kwb to "make all" on Kirkwood platforms.
+  * Build tools out-of-tree too so as not to dirty the source used for the
+    actual platforms (Closes: #763024).
+  * Add patch to initialize scsi before trying scsi disks in
+    config_distro_bootcmd (Closes: #764069).
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Mon, 06 Oct 2014 16:58:04 -0700
+
+u-boot (2014.10~rc2+dfsg1-2~exp1) experimental; urgency=medium
+
+  * Split u-boot package into u-boot-imx, u-boot-omap and u-boot-sunxi
+    packages on armhf.
+
+  * debian/targets:
+    - Enable A10-OLinuXino-Lime target.
+    - Enable Cubieboard2 and Cubieboard2_FEL targets (Closes: #762383).
+    - Enable A20-OLinuXino-LIME target.
+    - Disable mx6_cubox-i
+    - Disable efikamx and efikasb.
+  
+  * debian/patches:
+    - Add patch from upstream to support A20-OLinuXino-LIME.
+    - Disable patches for cubox-i.
+  
+  * debian/rules:
+    - Remove excess conditional architecture check, drop build-dep on
+      dctrl-tools.
+    - Remove executable bit from u-boot targets.
+
+  * Updated lintian overrides.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Mon, 22 Sep 2014 18:30:12 -0500
+
+u-boot (2014.10~rc2+dfsg1-1) experimental; urgency=medium
+
+  * New upstream release candidate.
+  
+  * Update debian/patches:
+    - Remove Cubieboard and Cubietruck patches, applied upstream.
+    - Remove kerma-sheevaplug-mvsdio patch, applied upstream.
+    - Update openrd-mmc patch, partially applied upstream.
+    - Add patch to workaround failure when building env tools.
+  
+  * [armhf] Add Bananapi target.
+
+  * debian/rules:
+    - Install fw_printenv and fw_setenv symlink in platform-specific dir.
+    - Create include/config/auto.conf to allow tools-only target to build.
+    - Update to use defconfig target rather than config target.
+  
+  * debian/copyright:
+    - Update Files-Excluded as some files were removed upstream.
+  
+  * Updated lintian overrides.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Wed, 03 Sep 2014 23:28:59 -0700
+
+u-boot (2014.07+dfsg1-2) unstable; urgency=medium
+
+  [ Steve Langasek ]
+  * Rebase cubox-i patches on 2014.07 and re-enable the target.
+
+  [ Vagrant Cascadian ]
+  * Switch to debhelper 9 with executable .install files.
+  * Remove the efikamx and efikasb targets.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Sun, 14 Sep 2014 23:01:50 -0500
+
+u-boot (2014.07+dfsg1-1) unstable; urgency=medium
+
+  * New upstream version.
+  * [armhf] Temporarily disable cubox-i target, which needs re-working for
+    new upstream version.
+  * Refresh Cubietruck and Cubieboard patches.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Thu, 28 Aug 2014 12:22:06 -0700
+
+u-boot (2014.07~rc4+dfsg1-1) experimental; urgency=medium
+
+  * New upstream release candidate.
+  * Updated patches for sheevaplug MMC and SATA support.
+  * Updated openrd patches to use MMC driver.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Sat, 12 Jul 2014 17:24:51 -0700
+
+u-boot (2014.04+dfsg1-3) unstable; urgency=medium
+
+  * Add patch for mx53loco that enables support for ext4, the "load" command,
+    and using bootz with raw initrds.
+  * Remove ZUMA platform and drop powerpc from u-boot architectures
+    (Closes: #754610).
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Mon, 28 Jul 2014 15:30:26 -0700
+
+u-boot (2014.04+dfsg1-2) unstable; urgency=medium
+
+  * Enable udoo_quad target, with patch improving the udoo_quad boot
+    environment. Thanks to Michael Fladischer! (Closes: #753376).
+  * Enable Cubieboard target and patches.
+  * Update lintian overrides.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Wed, 09 Jul 2014 12:37:12 -0700
+
+u-boot (2014.04+dfsg1-1) unstable; urgency=medium
+
+  [ Vagrant Cascadian ]
+  * Repack upstream tarball to remove files containing firmware without
+    sources (Closes: #750912).
+
+  * Add patches for Cubietruck from upstream.
+  * Add Cubietruck and Cubietruck_FEL targets (Closes: #750473).
+
+  * Add support for bootscripts to BeagleBone Black.
+    - Support loading files from either first or second partition.
+
+  * Modified wandboard patches:
+    - Add support for bootscripts.
+    - Support both fat and ext filesystems by consistantly using the "load"
+      command.
+    - Try loading bootscript from /boot/ as a fallback if not found in /.
+
+  * Update debian/copyright to use copyright format 1.0.
+    - Document which files are removed in debian/copyright.
+  * Update debian/watch to handle +dfsg version.
+  * Update lintian overrides:
+    - Ignore 'u-boot: statically-linked-binary'.
+    - Include new u-boot targets.
+
+  [ Andreas Henriksson ]
+  * Add patches for sunxi AHCI driver (Cubietruck) (Closes: #750473).
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Sun, 15 Jun 2014 21:03:40 -0700
+
+u-boot (2014.04-2) unstable; urgency=medium
+
+  * Fix FTBFS on powerpc by not setting CROSS_COMPILE when empty. 
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Mon, 26 May 2014 11:32:49 -0700
+
+u-boot (2014.04-1) unstable; urgency=low
+
+  [ Steve Langasek ]
+  * Patches taken from https://github.com/rabeeh/u-boot-imx6.git to support
+    the SolidRun CuBox-i series:
+    - debian/patches/spl-sata-support.diff:
+      Add support for SATA in SPL mode
+    - debian/patches/imx6-spl-support.diff:
+      Add support for SPL on i.MX6-based systems
+    - debian/patches/cubox-support.diff, tools/logos/solidrun.bmp:
+      Add support for the CuBox-i.
+  * Build the mx6_cubox-i target (Closes: #741127).
+
+  [ Vagrant Cascadian ]
+  * Add Nokia nokia_rx51 (n900) to targets to build.
+    - Patch n900 build to support bootz and raw initrds.
+  * debian/rules: Fix building of targets for v2014.04.
+    - Move fw_printenv creation into board-specific targets.
+    - Build target "tools-only".
+    - Drop special-casing of MLO, add MLO to debian/targets.
+  * debian/patches/cubox-i-raw-initrd.diff:
+    - Patch to support raw initrd on cubox-i. 
+  * debian/watch: Use http.
+  * debian/control: Bump Standards-Version to 3.9.5, no changes needed.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Tue, 20 May 2014 10:04:56 -0700
+
+u-boot (2014.01-2) unstable; urgency=medium
+
+  * Set Maintainer to Vagrant Cascadian (Closes: #738446).
+  * Remove Micah Anderson from uploaders.
+  * Add Clint Adams <clint@debian.org> to uploaders.
+  * Use grep-dctrl to pull architecture list from debian/control, rather than
+    hardcoding architectures in debian/rules.
+  * u-boot-tools: Set architecture to linux-any (Closes: #730833).
+  * Build raspberry pi (rpi_b) image on armel.
+    - Patch to to enable EXT2/EXT4 support and raw initrds.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Tue, 04 Mar 2014 14:13:22 -0800
+
+u-boot (2014.01-1) unstable; urgency=low
+
+  * New upstream version. 
+  * Updated patches. 
+  * debian/watch: Update to catch -rc versions.
+  * debian/control: Update Vcs-* headers.
+  * u-boot-tools: Strip comment sections from mkimage and fw_printenv.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Tue, 11 Feb 2014 15:11:47 -0800
+
+u-boot (2013.10-3) unstable; urgency=low
+
+  * Move build of dbau1100 from mipsel to mips, which fixes FTBFS on mipsel,
+    due to dbau1100 being big-endian.
+  * Disable mipsel builds of u-boot, as it no longer has any targets.
+  * Add patch to specify default mmc partition to use when loading uEnv.txt
+    on BeagleBone Black.
+  * Add patch to support raw initrds on BeagleBone Black.
+  * Mark u-boot-tools as Multi-Arch: foreign.
+  * Mark u-boot as Multi-Arch: same.
+  * Update lintian overrides with list of current platforms.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Sun, 17 Nov 2013 00:09:32 -0800
+
+u-boot (2013.10-2) unstable; urgency=low
+
+  * debian/rules:
+    - Switch back to explicitly building the specified target.
+    - Allow building multiple targets per platform.
+  * debian/targets:
+    - Build the spl/u-boot-spl.bin target on several armhf platforms, which 
+      generates the MLO file.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Mon, 21 Oct 2013 11:33:01 -0700
+
+u-boot (2013.10-1) unstable; urgency=low
+
+  * New upstream version (Closes: #667680, #726699).
+    - Update mipsel-native-endianness.diff
+  * debian/rules:
+    - Remove various tools/* files on clean target.
+    - Build each platform target and install MLO file if present.
+      (Closes: #687562).
+    - Support parallel builds using DEB_BUILD_OPTIONS=parallel=N.
+  * Enable BeagleBone Black and Wandboard platforms.
+  * Add patch to support uEnv.txt and directly loading zimage for Wandboard.
+  * Include env configs u-boot-tools examples (Closes: #631659, #636214).
+  * Only build u-boot on architectures which generate images (Closes: #635050).
+  * Drop i386 builds of u-boot, as the only target (eNET) was removed upstream.
+  * debian/control: Add myself to uploaders.
+
+ -- Vagrant Cascadian <vagrant@debian.org>  Sun, 20 Oct 2013 10:23:55 -0700
+
+u-boot (2013.01.01-4) unstable; urgency=low
+
+  * Upload to unstable.
+  * Drop transitional packages uboot-envtools and uboot-mkimage.
+
+ -- Clint Adams <clint@debian.org>  Thu, 09 May 2013 21:41:25 -0400
+
+u-boot (2013.01.01-3) experimental; urgency=low
+
+  * Disable unnecessary JFFS2 on GuruPlug
+  * Disable MMC on GuruPlug, devices are not detected,
+    they show up as USB devices instead
+
+ -- Micah Anderson <micah@debian.org>  Mon, 25 Mar 2013 22:56:32 -0400
+
+u-boot (2013.01.01-2) experimental; urgency=low
+
+  * More properly enable MMC on GuruPlug.
+  * Use new Efika target names.
+  * Bump to Standards-Version 3.9.4.
+
+ -- Clint Adams <clint@debian.org>  Sun, 24 Mar 2013 21:59:03 -0400
+
+u-boot (2013.01.01-1) experimental; urgency=low
+
+  * New upstream version.  closes: #699232.
+    - Drop strip-env-tools.diff (merged).
+    - Update kerma-sheevaplug-mvsdio.diff.
+    - Update mipsel-native-endianness.diff
+  * Enable CONFIG_SYS_MVFS and CONFIG_CMD_MMC for GuruPlug.
+
+ -- Clint Adams <clint@debian.org>  Thu, 21 Mar 2013 14:21:33 -0400
+
+u-boot (2012.04.01-2) unstable; urgency=low
+
+  * Remove code duplication in kerma-sheevaplug-mvsdio.diff.
+    closes: #674230.
+
+ -- Clint Adams <clint@debian.org>  Thu, 31 May 2012 21:04:49 -0400
+
+u-boot (2012.04.01-1) unstable; urgency=low
+
+  * New upstream version.
+    - Update mipsel-native-endianness.diff.
+    - Update no-error-on-set-but-unused-variables.diff (partially merged).
+    - Drop kirkwood_spi-irq_mask.diff (merged).
+    - Drop kirkwood-disable-l2c.diff (merged).
+
+ -- Clint Adams <clint@debian.org>  Tue, 01 May 2012 18:07:19 -0400
+
+u-boot (2011.12-3) unstable; urgency=low
+
+  [ Jonathan Nieder ]
+  * kirkwood: disable L2 cache before Linux boot; thanks to Ian Campbell.
+    closes: #658904
+
+  [ Loïc Minier ]
+  * Add patch to strip env tools; sent to upstream mailing-list.
+
+ -- Loïc Minier <lool@debian.org>  Sun, 11 Mar 2012 16:12:50 +0100
+
+u-boot (2011.12-2) unstable; urgency=low
+
+  [ Loïc Minier ]
+  * Build u-boot.imx for efikasb on armhf
+
+  [ Clint Adams ]
+  * Patch from Ian Campbell to fix Dreamplug breakage.  closes: #655102.
+
+ -- Clint Adams <clint@debian.org>  Sun, 08 Jan 2012 15:11:03 -0500
+
+u-boot (2011.12-1) unstable; urgency=low
+
+  * New upstream version.
+    - Drop build-timestamp_autogenerated.h-without-config.patch (merged).
+    - Drop ublimage-NAND-block-size-isn-t-set-at-build-time.patch (merged).
+    - Update kerma-sheevaplug-mvsdio.diff
+    - Update mipsel-native-endianness.diff
+    - Drop dreamplug-v8.patch (merged).
+
+ -- Clint Adams <clint@debian.org>  Mon, 02 Jan 2012 17:49:39 -0500
+
+u-boot (2011.09-2) unstable; urgency=low
+
+  * Patch from Pino Toscano <pino@debian.org> to build on the Hurd.
+    closes: #648295.
+  * Drop gr_xc3s_1500 target.
+  * Add build-arch and build-indep targets to debian/rules.
+
+ -- Clint Adams <clint@debian.org>  Tue, 15 Nov 2011 23:53:01 -0500
+
+u-boot (2011.09-1) unstable; urgency=low
+
+  [ Hector Oron ]
+  * Enable MX53LOCO platform.
+  * Update lintian overrides.
+
+  [ Loïc Minier ]
+  * Fix FTBFS on amd64 and allow `make tools` to succeed without
+    config.
+
+  [ Clint Adams ]
+  * New upstream version.
+    - Update kerma-sheevaplug-mvsdio.diff.
+    - Drop panda-default-console.diff (refactored).
+    - Replace dreamplug patches with Jason's v8.
+  * Add Buffalo Linkstation Mini env config from Benjamin Cama.
+
+ -- Clint Adams <clint@debian.org>  Fri, 30 Sep 2011 21:22:23 -0400
+
+u-boot (2011.06-4) unstable; urgency=low
+
+  * Increase the USB non-bulk timeout by an order of magnitude.
+    May fix #635774.
+
+ -- Clint Adams <clint@debian.org>  Sat, 06 Aug 2011 13:42:52 -0400
+
+u-boot (2011.06-3) unstable; urgency=low
+
+  * Add DreamPlug support.
+
+ -- Clint Adams <clint@debian.org>  Sun, 24 Jul 2011 09:35:32 -0400
+
+u-boot (2011.06-2) unstable; urgency=low
+
+  * Use -Wno-error=unused-but-set-variable on i386.
+
+ -- Clint Adams <clint@debian.org>  Sat, 02 Jul 2011 22:14:44 -0400
+
+u-boot (2011.06-1) unstable; urgency=low
+
+  * New upstream version.
+  * Fix i386 and mipsel builds.
+
+ -- Clint Adams <clint@debian.org>  Sat, 02 Jul 2011 19:25:28 -0400
+
+u-boot (2011.06~rc3-1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Clint Adams <clint@debian.org>  Sat, 02 Jul 2011 15:50:46 -0400
+
+u-boot (2011.06~rc2-2) unstable; urgency=low
+
+  * Fix mipsel endianness problem again.
+  * Try building gr_xc3s_1500 on sparc.
+
+ -- Clint Adams <clint@debian.org>  Sat, 18 Jun 2011 10:13:53 -0400
+
+u-boot (2011.06~rc2-1) unstable; urgency=low
+
+  * New upstream version.
+  * Fix tools config selection.
+
+ -- Clint Adams <clint@debian.org>  Tue, 14 Jun 2011 20:53:07 -0400
+
+u-boot (2011.06~rc1-1) unstable; urgency=low
+
+  * New upstream version.
+    - Update mipsel-native-endianness.diff
+    - Drop Drop-config.h-include-in-tools-imximage.h.diff (merged).
+    - Drop openrd-client-and-ultimate.diff (merged).
+    - Update openrd-mmc.diff (formerly openrd-mmc-mtd-fat.diff).
+    - Drop eNET-monitor_flash_len.diff (merged).
+    - Update snapshot.commit to 2011.06-rc1.
+    - Use the first target for each arch to build the tools, or
+      fake it on the other architectures.
+  * Only build efikamx image on armhf.
+
+ -- Clint Adams <clint@debian.org>  Sat, 21 May 2011 11:04:30 -0400
+
+u-boot (2011.03-6) unstable; urgency=low
+
+  * Bump to Standards-Version 3.9.2.
+  * Tweak the u-boot-tools description.
+  * Drop igep0020, omap3_beagle, and omap4_panda targets from
+    armel; they are available on armhf.
+
+ -- Clint Adams <clint@debian.org>  Tue, 26 Apr 2011 16:11:24 -0400
+
+u-boot (2011.03-5) unstable; urgency=low
+
+  [ Sebastian Reichel ]
+  * Add Pandaboard target.  closes: #624123
+  * New patch to change default console on Pandaboard.
+
+ -- Clint Adams <clint@debian.org>  Mon, 25 Apr 2011 15:36:16 -0400
+
+u-boot (2011.03-4) unstable; urgency=low
+
+  * Enable FAT, SD/MMC, MTD, JFFS, UBIFS support on OpenRD boards.
+
+ -- Clint Adams <clint@debian.org>  Wed, 13 Apr 2011 18:05:36 -0400
+
+u-boot (2011.03-3) unstable; urgency=low
+
+  * Actually pass the right arch_number for OpenRD-Ultimate.
+
+ -- Clint Adams <clint@debian.org>  Tue, 12 Apr 2011 14:28:20 -0400
+
+u-boot (2011.03-2) unstable; urgency=low
+
+  * Fix i386 FTBFS with eNET-monitor_flash_len.diff
+  * Add patch for OpenRD-Client and OpenRD-Ultimate.
+  * Drop openrd_base target and add openrd_ultimate target.
+
+ -- Clint Adams <clint@debian.org>  Tue, 05 Apr 2011 15:56:43 -0400
+
+u-boot (2011.03-1) unstable; urgency=low
+
+  [ Loïc Minier ]
+  * Only try to build env tools when Linux MTD headers are present.
+    closes: #619673.
+
+  [ Clint Adams ]
+  * New upstream version.
+    - Drop fix-definition-of-global_data-struct.diff (now upstream).
+    - Drop EfikaMX-switch-to-MACH_TYPE_MX51_EFIKAMX.diff (upstream now).
+    - Drop sh-sh7785lcr-Fix-out-of-tree-building.diff (upstream now).
+    - Drop MIPS-dbau1x00-Remove-unused-flash-driver-stub.diff (upstream now).
+    - Drop x86-Align-config.mk-and-linker-scripts-with-other-ar.diff
+      (upstream now).
+    - Update snapshot.commit to 2011.03
+
+ -- Clint Adams <clint@debian.org>  Fri, 01 Apr 2011 10:30:46 -0400
+
+u-boot (2011.03~rc1-4) experimental; urgency=low
+
+  * Add patch x86-Align-config.mk-and-linker-scripts-with-other-ar.
+    From upstream mailing-list; fixes x86 build (eNET).
+
+ -- Loïc Minier <lool@debian.org>  Wed, 09 Feb 2011 14:51:01 +0100
+
+u-boot (2011.03~rc1-3) experimental; urgency=low
+
+  * Add debian/source/local-options
+    - unapply-patches: avoids committing patched tree after a build
+    - abort-on-upstream-changes: avoids creating a debian-changes-* patch
+      when building from a dirty tree
+  * Add patch MIPS-dbau1x00-Remove-unused-flash-driver-stub,
+    from u-boot-mipsel.git 17a990b55008fd79636e4880d9d10b7172ca87ce and also
+    sent to the upstream mailing-list; fixes build of dbau1x00 board by
+    removing board/dbau1x00/flash.c entirely, and hence fixes the build of
+    u-boot on mipsel.
+
+ -- Loïc Minier <lool@debian.org>  Tue, 08 Feb 2011 16:49:05 +0100
+
+u-boot (2011.03~rc1-2) experimental; urgency=low
+
+  * New patch sh-sh7785lcr-Fix-out-of-tree-building; from upstream
+    e72f46787f44c1104a8df18511ab230b6072a1f0; fixes Debian sh4 build; thanks
+    Nobuhiro Iwamatsu; closes: #611873.
+
+ -- Loïc Minier <lool@debian.org>  Mon, 07 Feb 2011 17:20:16 +0100
+
+u-boot (2011.03~rc1-1) experimental; urgency=low
+
+  * dpkg-shlibdeps usr/bin/* rather than just mkimage.
+  * uboot-mkimage's Section is utils.
+  * Allow overriding CROSS_COMPILE.
+  * New upstream release candidate.
+    - Merge commit v2011.03-rc1
+    - Update snapshot.commit to 2011.03-rc1
+  * Add EfikaMX support.
+    - Add patch EfikaMX-switch-to-MACH_TYPE_MX51_EFIKAMX from the upstream
+      mailing-list; fixes build on EfikaMX (EfikaMX: switch to
+      MACH_TYPE_MX51_EFIKAMX)
+    - Add patch Drop-config.h-include-in-tools-imximage.h from the upstream
+      mailing-list; fixes tools-all build of imximage.c.
+    - Build u-boot.imx for efikamx on armel.
+  * Refresh patch kerma-sheevaplug-mvsdio to fix fuzz.
+
+ -- Loïc Minier <lool@debian.org>  Thu, 03 Feb 2011 13:13:14 +0100
+
+u-boot (2010.12-2) unstable; urgency=low
+
+  * Avoid calling dpkg-architecture if DEB_HOST_ARCH is set.
+  * Misc refactoring of debian/rules.
+    - Split per architecture list of platform and targets into
+      debian/targets.
+    - Actually use INSTALL_FILE/INSTALL_DIR/INSTALL_PROGRAM.
+    - Add support for cross-builds; these will currently lack tools.
+    - Build board-specific u-boot files in a separate build dir from the
+      generic tools
+  * Fix handling of -Wl,foo LDFLAGS; the upstream build passes LDFLAGS
+    directly to ld instead of calling gcc for linking; so instead of passing
+    -Wl,foo in LDFLAGS as in automake builds, one should set LDFLAGS to foo
+    directly; add a snippet to strip -Wl, from LDFLAGS; alternatively, we
+    could do as in other special packages like the kernel and simply unset
+    LDFLAGS entirely; closes: #607613.
+  * Install and compress upstream mkimage manpage; based on a patch by
+    Marcin Juszkiewicz.
+  * Add a dummy uboot-mkimage package for upgrades from squeeze; based on a
+    patch by Marcin Juszkiewicz; closes: #607618.
+  * Add new patch, fix-definition-of-global_data-struct, from the upstream
+    x86 maintainer; fixes build of eNET board which breaks u-boot's build on
+    i386; closes: #608801.
+  * Workaround an upstream bug in distclean by removing include/asm/proc and
+    /arch explicitly for now; patch was sent upstream.
+  * Don't repeat Section: in binary package.
+  * Add myself to Uploaders.
+  * Split tools in u-boot-tools package.
+  * Drop board-specific tools; these are too dangerous; only ship mkimage for
+    now.
+  * Add igep0020 and omap3_beagle builds on armel
+  * Update snapshot.commit to the 2010.12 release contents; this avoids a
+    pointless diff with the tarball.
+
+ -- Loïc Minier <lool@debian.org>  Mon, 17 Jan 2011 22:43:41 +0100
+
+u-boot (2010.12-1) unstable; urgency=low
+
+  * New upstream version.
+  * Install more tools in preparation for splitting off a
+    u-boot-tools binary package.
+
+ -- Clint Adams <clint@gnu.org>  Tue, 28 Dec 2010 17:03:44 -0500
+
+u-boot (2010.12~rc3-1) unstable; urgency=low
+
+  * New upstream release candidate.
+  * Add dockstar target.
+
+ -- Clint Adams <clint@gnu.org>  Sun, 19 Dec 2010 09:45:42 -0500
+
+u-boot (2010.12~rc2-1) unstable; urgency=low
+
+  * New upstream release candidate.
+  * Add openrd_base target.
+
+ -- Clint Adams <clint@gnu.org>  Sat, 04 Dec 2010 15:32:38 -0500
+
+u-boot (2010.09-2) unstable; urgency=low
+
+  * Enable ext2 commands on GuruPlug.
+  * Ship ELF files (for loading into RAM with OpenOCD).
+
+ -- Clint Adams <clint@gnu.org>  Sat, 20 Nov 2010 18:20:40 -0500
+
+u-boot (2010.09-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Clint Adams <schizo@debian.org>  Wed, 29 Sep 2010 00:06:25 -0400
+
+u-boot (2010.09~rc2-1) unstable; urgency=low
+
+  * New upstrem release candidate.
+
+ -- Clint Adams <schizo@debian.org>  Sun, 19 Sep 2010 14:20:52 -0400
+
+u-boot (2010.09~rc1-2) unstable; urgency=low
+
+  * Add patch from Gérald Kerma to add Sheevaplug mvsata support.
+  * Add patch from Gérald Kerma to add Sheevaplug mvsdio support.
+
+ -- Clint Adams <schizo@debian.org>  Sun, 12 Sep 2010 11:48:22 -0400
+
+u-boot (2010.09~rc1-1) unstable; urgency=low
+
+  * New upstream release candidate.
+    - Drop guruplug-miiphy_reset.diff.
+    - Update mipsel-native-endianness.diff.
+    - Drop sh4-native-compile.diff.
+  * Bump to Standards-Version 3.9.1.
+
+ -- Clint Adams <schizo@debian.org>  Sat, 11 Sep 2010 00:43:04 -0400
+
+u-boot (2010.06-1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Clint Adams <schizo@debian.org>  Sat, 03 Jul 2010 13:49:46 -0400
+
+u-boot (2010.06~rc3-1) unstable; urgency=low
+
+  * New upstream version.
+  * Fix sh4-native-compile.diff to not break sh64, thanks to Paul
+    Mundt.
+  * Ship mkimage, conflict/replace uboot-mkimage, build on all
+    architectures.
+
+ -- Clint Adams <schizo@debian.org>  Fri, 25 Jun 2010 14:49:06 -0400
+
+u-boot (2010.06~rc2-1) unstable; urgency=medium
+
+  * Add sh4-native-compile.diff from Aurelien Jarno.  closes: #586026.
+  * New upstream version.
+    - Drop marvell-machtypes.diff.
+
+ -- Clint Adams <schizo@debian.org>  Tue, 15 Jun 2010 21:37:26 -0400
+
+u-boot (2010.06~rc1-6) unstable; urgency=medium
+
+  * Add guruplug-miiphy_reset.diff.
+  * Clean between targets.  closes: #585570.
+
+ -- Clint Adams <schizo@debian.org>  Fri, 11 Jun 2010 21:57:31 -0400
+
+u-boot (2010.06~rc1-5) unstable; urgency=low
+
+  * Replace mipsel-native-endianness.diff with patch adapted
+    from a 2008 mailing list posting by Shinya Kuribayashi.
+
+ -- Clint Adams <schizo@debian.org>  Fri, 04 Jun 2010 20:08:27 -0400
+
+u-boot (2010.06~rc1-4) unstable; urgency=low
+
+  * Add r2dplus target for sh4.
+  * mipsel-native-endianness.diff: don't force endianness on mips/mipsel
+
+ -- Clint Adams <schizo@debian.org>  Thu, 03 Jun 2010 19:32:50 -0400
+
+u-boot (2010.06~rc1-3) unstable; urgency=low
+
+  * Fix mipsel typo.
+  * Apply patch from Nobuhiro Iwamatsu to change sh4 target board
+    from espt to sh7785lcr_32bit.  closes: #584192.
+
+ -- Clint Adams <schizo@debian.org>  Wed, 02 Jun 2010 08:25:04 -0400
+
+u-boot (2010.06~rc1-2) unstable; urgency=low
+
+  * Produce u-boot.bin on i386.
+  * Switch mipsel target to AMD DBAu1100.
+  * Add marvell-machtypes.diff.
+
+ -- Clint Adams <schizo@debian.org>  Mon, 31 May 2010 22:09:29 -0400
+
+u-boot (2010.06~rc1-1) unstable; urgency=low
+
+  * Add Vcs-Git and Vcs-Browser headers.
+  * Add GuruPlug target (armel).
+  * Switch mipsel target to TB0229.
+  * Add watch file.
+  * Update README.Debian for SheevaPlug and GuruPlug.
+
+ -- Clint Adams <schizo@debian.org>  Mon, 31 May 2010 19:29:40 -0400
+
+u-boot (2010.03-1) unstable; urgency=low
+
+  * Initial packaging.  closes: #583605.
+
+ -- Clint Adams <schizo@debian.org>  Fri, 28 May 2010 16:20:39 -0400

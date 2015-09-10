@@ -1,0 +1,3 @@
+u-boot-dtb.bin usr/lib/u-boot-atm7059a
+u-boot.bin usr/lib/u-boot-atm7059a
+u-boot-dtb.img usr/lib/u-boot-atm7059a
