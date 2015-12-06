@@ -214,10 +214,30 @@ config CMD_I2C
 	help
 	  I2C support.
 
+config CMD_GPIO
+	bool "gpio"
+	help
+	  GPIO utility command.
+
 config CMD_USB
 	bool "usb"
 	help
 	  USB support.
+
+config CMD_USB_STORAGE
+	bool "usb_storage"
+	help
+	  USB support.
+
+config CMD_USB_MASS_STORAGE
+	bool "usb_mass_storage"
+	help
+	  USB support.
+
+#config USB_KEYBOARD
+#	bool "usb_kbd"
+#	help
+#	  USB support.
 
 config CMD_FPGA
 	bool "fpga"

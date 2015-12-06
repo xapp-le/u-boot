@@ -21,8 +21,13 @@
  * MA 02111-1307 USA
  */
 
+#include <asm/arch/actions_reg_owl.h>
+
 #ifndef __ASM_CLOCKS_H
 #define __ASM_CLOCKS_H
+
+
+/*
 
 #define CMU_BASE			0xB0160000
 
@@ -78,6 +83,8 @@
 #define CMU_TVOUTPLLDEBUG		(CMU_BASE + 0x00EC)
 #define CMU_DEEPCOLORPLLDEBUG		(CMU_BASE + 0x00F4)
 #define CMU_AUDIOPLL_ETHPLLDEBUG	(CMU_BASE + 0x00F8)
+
+*/
 
 /* reset0 definition */
 #define CMU_RST_DMAC			(0x1 << 0)

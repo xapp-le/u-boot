@@ -21,10 +21,14 @@
  * MA 02111-1307 USA
  */
 
+#include <asm/arch/actions_reg_owl.h>
+
 #ifndef __ASM_SPI_H
 #define __ASM_SPI_H
 
-/* SPI0 */
+/*
+
+// SPI0 
 #define SPI0_BASE			0xB0200000
 #define SPI0_CTL			(SPI0_BASE + 0x0000)
 #define SPI0_CLKDIV			(SPI0_BASE + 0x0004)
@@ -36,7 +40,7 @@
 #define SPI0_TXCR			(SPI0_BASE + 0x001c)
 #define SPI0_RXCR			(SPI0_BASE + 0x0020)
 
-/* SPI1 */
+// SPI1 
 #define SPI1_BASE			0xB0204000
 #define SPI1_CTL			(SPI1_BASE + 0x0000)
 #define SPI1_CLKDIV			(SPI1_BASE + 0x0004)
@@ -48,7 +52,7 @@
 #define SPI1_TXCR			(SPI1_BASE + 0x001c)
 #define SPI1_RXCR			(SPI1_BASE + 0x0020)
 
-/* SPI2 */
+// SPI2
 #define SPI2_BASE			0xB0208000
 #define SPI2_CTL			(SPI2_BASE + 0x0000)
 #define SPI2_CLKDIV			(SPI2_BASE + 0x0004)
@@ -60,7 +64,7 @@
 #define SPI2_TXCR			(SPI2_BASE + 0x001c)
 #define SPI2_RXCR			(SPI2_BASE + 0x0020)
 
-/* SPI3 */
+// SPI3 
 #define SPI3_BASE			0xB020C000
 #define SPI3_CTL			(SPI3_BASE + 0x0000)
 #define SPI3_CLKDIV			(SPI3_BASE + 0x0004)
@@ -71,6 +75,9 @@
 #define SPI3_SEED			(SPI3_BASE + 0x0018)
 #define SPI3_TXCR			(SPI3_BASE + 0x001c)
 #define SPI3_RXCR			(SPI3_BASE + 0x0020)
+
+*/
+
 
 #endif
 

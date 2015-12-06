@@ -21,8 +21,12 @@
  * MA 02111-1307 USA
  */
 
+#include <asm/arch/actions_reg_owl.h>
+
 #ifndef __ASM_GMP_H
 #define __ASM_GMP_H
+
+/*
 
 #define GPIO_MFP_PWM_BASE		0xB01B0000
 #define GPIO_AOUTEN			(GPIO_MFP_PWM_BASE + 0x0000)
@@ -87,6 +91,8 @@
 #define INTC_GPIOD_MSK			(GPIO_MFP_PWM_BASE + 0x0224)
 #define INTC_GPIOE_PD			(GPIO_MFP_PWM_BASE + 0x0228)
 #define INTC_GPIOE_MSK			(GPIO_MFP_PWM_BASE + 0x022c)
+
+*/
 
 #endif
 

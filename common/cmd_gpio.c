@@ -84,7 +84,8 @@ static int do_gpio_status(bool all, const char *gpio_name)
 			flags |= FLAG_SHOW_ALL;
 		bank_name = gpio_get_bank_info(dev, &num_bits);
 		if (!num_bits) {
-			debug("GPIO device %s has no bits\n", dev->name);
+			//debug("GPIO device %s has no bits\n", dev->name);
+			printf("GPIO device %s has no bits\n", dev->name);
 			continue;
 		}
 		banklen = bank_name ? strlen(bank_name) : 0;
@@ -165,7 +166,8 @@ static int do_gpio(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
 		default:  goto show_usage;
 	}
 
-#if defined(CONFIG_DM_GPIO)
+//#if defined(CONFIG_DM_GPIO)
+#if defined(_____CONFIG_DM_GPIO) //TS_
 	/*
 	 * TODO(sjg@chromium.org): For now we must fit into the existing GPIO
 	 * framework, so we look up the name here and convert it to a GPIO number.
@@ -178,7 +180,7 @@ static int do_gpio(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
 		return cmd_process_error(cmdtp, ret);
 #else
 	/* turn the gpio name into a gpio number */
-	gpio = name_to_gpio(str_gpio);
+	gpio = name_to_gpio(str_gpio);  // user space/DM gpio
 	if (gpio < 0)
 		goto show_usage;
 #endif
@@ -202,7 +204,7 @@ static int do_gpio(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
 		}
 		gpio_direction_output(gpio, value);
 	}
-	printf("gpio: pin %s (gpio %i) value is %lu\n",
+	printf("gpio: pin %s (gpio %i) value is %X\n",
 		str_gpio, gpio, value);
 
 	if (ret != -EBUSY)

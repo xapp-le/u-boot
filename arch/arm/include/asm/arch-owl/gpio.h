@@ -1,6 +1,9 @@
 #ifndef __ARCH_OWL_GPIO_H__
 #define __ARCH_OWL_GPIO_H__
 
+//TS_
+#define gpio_status owl_gpio_reg_dump_all
+
 /***generate gpio num, if you don't parse from fdt*********/
 #define OWL_GPIO_BANKS         5
 #define OWL_GPIO_PER_BANK      32
@@ -15,7 +18,7 @@ enum gpio_group {
 };
 
 /* GPIOA/B/C/D/E, GPIOE0~4 */
-#define OWL_NR_GPIO            (4 * 32 + 4)
+#define OWL_NR_GPIO            (4 * OWL_GPIO_PER_BANK + 4)
 
 #define OWL_GPIO_PORTA(x)      ((x) + OWL_GPIO_PER_BANK * 0)
 #define OWL_GPIO_PORTB(x)      ((x) + OWL_GPIO_PER_BANK * 1)
