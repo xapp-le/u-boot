@@ -33,17 +33,20 @@ static struct gpio_chip *find_gpio_chip_by_node(int dev_node)
 	return NULL;
 }
 
-int gpio_request(unsigned gpio, const char *label)
+//TS
+#ifndef CONFIG_DM_GPIO
+
+int _gpio_request(unsigned gpio, const char *label)
 {
 	return 0;
 }
 
-int gpio_free(unsigned gpio)
+int _gpio_free(unsigned gpio)
 {
 	return 0;
 }
 
-int gpio_direction_input(unsigned gpio)
+int _gpio_direction_input(unsigned gpio)
 {
 	if (master_ic_chip)
 		return master_ic_chip->ops->direction_input(gpio);
@@ -51,7 +54,7 @@ int gpio_direction_input(unsigned gpio)
 	return -1;
 }
 
-int gpio_direction_output(unsigned gpio, int value)
+int _gpio_direction_output(unsigned gpio, int value)
 {
 	if (master_ic_chip)
 		return master_ic_chip->ops->direction_output(gpio, value);
@@ -59,7 +62,7 @@ int gpio_direction_output(unsigned gpio, int value)
 	return -1;
 }
 
-int gpio_get_value(unsigned gpio)
+int _gpio_get_value(unsigned gpio)
 {
 	if (master_ic_chip)
 		return master_ic_chip->ops->get_value(gpio);
@@ -67,13 +70,15 @@ int gpio_get_value(unsigned gpio)
 	return -1;
 }
 
-int gpio_set_value(unsigned gpio, int value)
+int _gpio_set_value(unsigned gpio, int value)
 {
 	if (master_ic_chip)
 		return master_ic_chip->ops->set_value(gpio, value);
 
 	return -1;
 }
+
+#endif // CONFIG_DM_GPIO
 
 int owl_gpio_generic_direction_input(struct gpio_chip *chip, unsigned gpio)
 {
