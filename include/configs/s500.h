@@ -89,7 +89,9 @@
 
 /* Flat Device Tree Definitions */
 #define CONFIG_OF_LIBFDT
+#ifndef CONFIG_FIT
 #define CONFIG_FIT
+#endif
 
 #define CONFIG_SYS_GENERIC_BOARD
 
@@ -102,26 +104,34 @@
 
 #define CONFIG_CMD_BOOTI
 #define CONFIG_CMD_BOOTZ
+#ifndef CONFIG_CMD_MEMORY
 #define CONFIG_CMD_MEMORY
+#endif
+#ifndef CONFIG_CMD_RUN
 #define CONFIG_CMD_RUN
+#endif
 #define CONFIG_ANDROID_BOOT_IMAGE
 
-#define CONFIG_BOOTDELAY		2	/* autoboot after 2 seconds */ 
+#define CONFIG_BOOTDELAY		5	/* autoboot after 2 seconds */ 
 #define CONFIG_AUTOBOOT
 #define CONFIG_AUTOBOOT_KEYED
-#define CONFIG_AUTOBOOT_DELAY_STR	"s500"
+#define CONFIG_AUTOBOOT_DELAY_STR	"s"
 #define CONFIG_AUTOBOOT_PROMPT		\
 	"Enter %s to abort autoboot in %d seconds\n", CONFIG_AUTOBOOT_DELAY_STR, bootdelay
 
 /* MMC */
+#ifndef CONFIG_CMD_MMC
 #define CONFIG_CMD_MMC	
+#endif
 #define CONFIG_MMC			1
 #define CONFIG_GENERIC_MMC	1
 #define CONFIG_OWL_MMC		1
-#define CONFIG_MISC_INFO	1
+#define CONFIG_MISC_INFO        1
 
 #define CONFIG_SYS_VSNPRINTF
+#ifndef CONFIG_CMD_ECHO
 #define CONFIG_CMD_ECHO
+#endif
 
 
 #define CONFIG_USE_IRQ
@@ -193,8 +203,10 @@
 #define CONFIG_SYS_PROMPT		"owl> "
 #define CONFIG_SYS_PBSIZE		(CONFIG_SYS_CBSIZE + \
 					sizeof(CONFIG_SYS_PROMPT) + 16)
+#ifndef CONFIG_SYS_HUSH_PARSER 
 #define CONFIG_SYS_HUSH_PARSER
 #define CONFIG_SYS_PROMPT_HUSH_PS2	"> "
+#endif
 #define CONFIG_SYS_BARGSIZE		CONFIG_SYS_CBSIZE
 #define CONFIG_SYS_LONGHELP
 #define CONFIG_SYS_MAXARGS		16	/* max command args */
@@ -204,6 +216,7 @@
 
 #define CONFIG_OWL_GPIO_GENERIC
 #define CONFIG_OWL_GPIO
+#define CONFIG_GPIO_CMD
 
 #define CONFIG_SYS_I2C_OWL
 
@@ -221,12 +234,16 @@
 #define CONFIG_G_DNL_VENDOR_NUM 0x18d1
 #define CONFIG_G_DNL_PRODUCT_NUM 0x0c02
 #define CONFIG_G_DNL_UMS_VENDOR_NUM 0x10d6
-#define CONFIG_G_DNL_UMS_PRODUCT_NUM	0x0C02
+#define CONFIG_G_DNL_UMS_PRODUCT_NUM   0x0C02
 #define CONFIG_G_DNL_MANUFACTURER "Actions-Semi"
 
 /* function: gaget mass storage */
+#ifndef CONFIG_USB_GADGET_MASS_STORAGE
 #define	CONFIG_USB_GADGET_MASS_STORAGE
+#endif
+#ifndef CONFIG_CMD_USB_MASS_STORAGE
 #define	CONFIG_CMD_USB_MASS_STORAGE
+#endif
 
 /* function: fastboot */
 #define	CONFIG_CMD_FASTBOOT
@@ -237,10 +254,18 @@
 #define CONFIG_BOOTLOADER_ADDR         0x200200
 #define CONFIG_UBOOT_ADDR              0x300000
 /* function: usb_ether */
+#ifndef CONFIG_USB_ETHER
 #define CONFIG_USB_ETHER
+#endif
+#ifndef CONFIG_USB_ETH_RNDIS
 #define CONFIG_USB_ETH_RNDIS
+#endif
+#ifndef CONFIG_CMD_NET
 #define CONFIG_CMD_NET
+#endif
+#ifndef CONFIG_CMD_PING
 #define CONFIG_CMD_PING
+#endif
 
 /* function:ethernet */
 #define CONFIG_ACTS_OWL_MAC
@@ -259,12 +284,18 @@
 
 
 /* USB Host*/
+#ifndef CONFIG_USB_XHCI
 #define CONFIG_USB_XHCI
+#endif
 #define CONFIG_USB_XHCI_OWL
-
-#define CONFIG_CMD_USB
-#define CONFIG_USB_STORAGE
 #define CONFIG_SYS_USB_XHCI_MAX_ROOT_PORTS     2
+
+#ifndef CONFIG_CMD_USB
+#define CONFIG_CMD_USB
+#endif
+#ifndef CONFIG_USB_STORAGE
+#define CONFIG_USB_STORAGE
+#endif
 
 
 #define CONFIG_ANDROID_RECOVERY
