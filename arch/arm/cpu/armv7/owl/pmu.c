@@ -321,6 +321,13 @@ static void init_sgpio_init_status(void)
 {
 	/*_atc2603c_reg_write(ATC2603C_PMU_SGPIO_CTL3, (pmu_config.sgpio_out_en << 9) | (pmu_config.sgpio_in_en << 2));*/
 	/*_atc2603c_reg_write(ATC2603C_PMU_SGPIO_CTL4, pmu_config.sgpio_out);*/
+
+//TS_ Light up the power LED
+
+printf("Light up the power LED!\n");
+	_atc2603c_reg_write(ATC2603C_PMU_MUX_CTL0, 0);// Bit[10:11]=0 for SGPIO4
+	_atc2603c_reg_write(ATC2603C_PMU_SGPIO_CTL3, 1<<13);// output enable
+	_atc2603c_reg_write(ATC2603C_PMU_SGPIO_CTL4, 1<<4);// output 1
 }
 
 #define CHK_VERIFY_REG(x, v)    {printf("0x%x:0x%x:0x%x\n", x, v, _atc2603c_reg_read(x));}
