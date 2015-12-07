@@ -207,7 +207,10 @@
 
 			atc260x-power{
 				compatible = "actions,atc2603c-power";
-				support_adaptor_type = <3>;      /*1: DCIN  2: USB  3:DCIN+USB*/
+				support_adaptor_type = <2>;      /*1: DCIN  2: USB  3:DCIN+USB*/
+				gauge_bus_id = <2>;      /*gauge bus id: 0~n*/
+				gauge_id = <1>;      /*0:default gauge, 1:hwgauge*/
+				boot_cap_threshold = <7>;     /*7%,the lowest capacity permitted to boot*/ 
 				support_minicharger = < 1 >;	/* 1:support minicharer  0:do not support minicharger */  
 			};
 		};
@@ -218,17 +221,7 @@
 		clock-frequency = <400000>;
 		status = "okay";
 		pinctrl-names = "default";
-		pinctrl-0 = <&i2c3_state_over_spi0>;
-		eg2801_eeprom@14 {
-			compatible ="actions,eg2801_eeprom";
-			reg = <0x14>;
-		};
-
-		eg2801_ram@55 {
-			compatible ="actions,eg2801_ram";
-			reg = <0x55>;
-		};
-		
+		pinctrl-0 = <&i2c3_state_over_spi0>;	
 		hdmi_read_edid@30 {
 			compatible = "actions,hdmi_read_edid";
 			reg = <0x30>;
@@ -275,19 +268,10 @@
 
 	framebuffer {
 		compatible = "actions,framebuffer";
-
-		/*never creat platform device*/
-		status = "disabled";
+		def_display  = "dsi";
+		bpp = <4>; 
 	};
 
-	ovl_boot {
-		usage = "boot";
-		disp_dev = <&lcd0>;
-	};
-
-	ovl_extra {
-		usage = "extra";
-	};
 		
 	lcd0: lcd0@b02a0000 {
 		status = "disabled";

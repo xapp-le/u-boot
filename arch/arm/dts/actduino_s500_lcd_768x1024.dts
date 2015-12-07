@@ -275,19 +275,10 @@
 
 	framebuffer {
 		compatible = "actions,framebuffer";
-
-		/*never creat platform device*/
-		status = "disabled";
+		def_display  = "dsi";
+		bpp = <4>; 
 	};
 
-	ovl_boot {
-		usage = "boot";
-		disp_dev = <&lcd0>;
-	};
-
-	ovl_extra {
-		usage = "extra";
-	};
 		
 	lcd0: lcd0@b02a0000 {
 		status = "disabled";

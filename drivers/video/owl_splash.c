@@ -89,7 +89,7 @@ static int lcd_gamma_load(void)
 
 int splash_image_init(void)
 {
-	int dev, part;
+	int ret, dev, part;
 	block_dev_desc_t *dev_desc;
 	
 	if(owl_get_boot_mode() == BOOT_MODE_PRODUCE)
@@ -107,15 +107,14 @@ int splash_image_init(void)
 	}
 	printf("bootlogo: if=%s, dev=%d\n",s, dev);
 
-	if (fat_register_device(dev_desc, part)) {
-		if (fat_register_device(dev_desc, part+1)) {
-			printf("Failed to register %s\n",s);
-			return 0;
-		}
+	ret = fat_register_device(dev_desc, part);
+	if (ret) {
+		printf("Failed to register %s:\n",s);
+		return 0;
 	}
 
-	splash_image_load();
-	lcd_gamma_load();
+	ret = splash_image_load();
+	ret = lcd_gamma_load();
 
 	return 0;
 }

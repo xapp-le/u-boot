@@ -519,7 +519,8 @@ void *hdmi_get_mode(struct hdmi_video_settings *settings)
     index = sizeof(hdmi_display_modes) / sizeof(struct asoc_videomode) - 1;
 
     while (index >= 0) {
-        if (settings->vid == hdmi_display_modes[index].mode.vid)
+		printf("settings->vid %d hdmi_display_modes[index].mode.vid %d \n",settings->vid,hdmi_display_modes[index].vid);
+        if (settings->vid == hdmi_display_modes[index].vid)
             return (void *)&hdmi_display_modes[index];
         --index;
     }
@@ -1448,7 +1449,8 @@ int hdmi_init(void)
     struct asoc_videomode *v_mode = NULL;
     struct hdmi_video_settings settings;
     int i=0; 
-    char buf[64]={0};
+    char buf[256]={0};
+    char * bootargs ;
     int bootable,bootrotate,bootvid,channel_invert,bit_invert;
 
     struct hdmi_sink_info* psink_info = &sink_info;
@@ -1464,6 +1466,7 @@ int hdmi_init(void)
 	    } 
 	    
 		bootvid = check_hdmi_mode(bootvid);
+		
 	    if (valide_vid(bootvid)){
 	        psink_info->v_settings.vid = bootvid;
 	        printf("%s: read vid  success = %d\n",__func__, bootvid);
@@ -1471,10 +1474,10 @@ int hdmi_init(void)
 	        printf("%s: first time used config vid  = %d\n",__func__, psink_info->v_settings.vid );
 	    }
 	
-			if(bootvid==7)
-				{
-					sink_info.v_settings.hdmi_mode = HDMI_MODE_DVI;
-				}
+		if(bootvid==7)
+		{
+			sink_info.v_settings.hdmi_mode = HDMI_MODE_DVI;
+		}
 				
 	    settings = sink_info.v_settings;
 	    act_setl(1<<28 , USB3_P0_CTL);
@@ -1500,11 +1503,21 @@ int hdmi_init(void)
 	    hdmi_general_cfg(&sink_info);
 	
 	    /* transmit hdmi vid through bootargs. */
-	    sprintf(buf, "h=%d", settings.vid);
-	    
-	    setenv("bootargs.add", buf);
-	
-	    owl_display_register(HDMI_DISPLAYER, &hdmi_ops, &(v_mode->mode),24,bootrotate);
+		
+	    bootargs = getenv("bootargs.add");
+	    	    
+		if (bootargs == NULL)
+			sprintf(buf, "hdmi_vid=%d",settings.vid);
+		else
+			sprintf(buf, "%s hdmi_vid=%d",bootargs,settings.vid);
+		
+		printf("hdmi_init bootargs %s \n",buf);
+		
+		setenv("bootargs.add", buf);
+	    	
+		
+		HDMI_DRV_PRINT("[%s owl_display_register v_mode->mode %p settings.vid %d \n", __func__,v_mode->mode,settings.vid);
+	    owl_display_register(HDMI_DISPLAYER,"hdmi",&hdmi_ops, &(v_mode->mode),24,bootrotate);
 	}
     return 0;
 }

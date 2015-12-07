@@ -281,18 +281,8 @@
 
 	framebuffer {
 		compatible = "actions,framebuffer";
-
-		/*never creat platform device*/
-		status = "disabled";
-	};
-
-	ovl_boot {
-		usage = "boot";
-		disp_dev = <&lcd0>;
-	};
-
-	ovl_extra {
-		usage = "extra";
+                def_display  = "dsi";
+                bpp = <4>;
 	};
 		
 	lcd0: lcd0@b02a0000 {
@@ -351,8 +341,14 @@
 		bit_invert = <0>;
 		bootable = <1>; 
 		bootrotate = <3>;   
-		/*default_resolution = "1080P60HZ";*/
-		default_resolution = "720P60HZ";
+		default_resolution = "1080P60HZ";
+		/*default_resolution = "720P60HZ";*/
+       };
+       
+       cvbs:cvbs@b02b0000{
+               bootable = <1>;  
+               default_mode = "PAL";
+
 	};
 
 	pwm: pwm@b01b0050 {

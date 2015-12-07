@@ -587,7 +587,7 @@ int owl_lcd_init(void)
 		return -1;
 	}
 	data_width = get_lcd_data_width(&lcd_par);
-	owl_display_register(LCD_DISPLAYER, &lcd_ops, lcd_par.mode, data_width, 0);
+	owl_display_register(LCD_DISPLAYER,"lcd", &lcd_ops, lcd_par.mode, data_width, 0);
 	return 0;
 }
 

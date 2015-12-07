@@ -112,7 +112,7 @@
 #endif
 #define CONFIG_ANDROID_BOOT_IMAGE
 
-#define CONFIG_BOOTDELAY		5	/* autoboot after 2 seconds */ 
+#define CONFIG_BOOTDELAY		2	/* autoboot after 2 seconds */ 
 #define CONFIG_AUTOBOOT
 #define CONFIG_AUTOBOOT_KEYED
 #define CONFIG_AUTOBOOT_DELAY_STR	"s"
@@ -323,6 +323,7 @@
 #define CONFIG_OWL_DISPLAY_LCD
 #define CONFIG_OWL_DISPLAY_DSI
 #define CONFIG_OWL_DISPLAY_HDMI
+#define CONFIG_OWL_DISPLAY_CVBS
 #define	CONFIG_LCD_FRAMEBUF_SIZE (1024*1024*10)
 
 /*gamma support*/
@@ -342,6 +343,7 @@
 #endif
 
 #define CONFIG_BOOT_POWER
+#define CONFIG_GAUGE_BQ27441
 #define CONFIG_CHECK_KEY
 
 #endif /* __CONFIG_S500_H */

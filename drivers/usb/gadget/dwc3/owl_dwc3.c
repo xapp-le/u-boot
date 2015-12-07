@@ -466,8 +466,7 @@ void dwc3_phy_init(u8 mode, unsigned char port_num)
 	if(g_ic_type == IC_ATM7059A){
 
 		if(mode == DWC3_MODE_DEVICE) {
-			// printk(" GS705A phy init for dwc3 gadget %s\n", __TIME__ );
-			printk(" GS705A phy init for dwc3 gadget \n");
+			printk(" GS705A phy init for dwc3 gadget %s\n", __TIME__ );
 			val_u8 =(1<<7) |(1<<5)|(1<<4)|(2<<2)|(3<<0);//select page1
 			setphy(0xf4, val_u8, port_num);
 			val_u8 =(1<<5) |(1<<4)|(0<<3)|(1<<2)|(1<<0);//negative sample
@@ -490,8 +489,7 @@ void dwc3_phy_init(u8 mode, unsigned char port_num)
 			setphy(0xe4, val_u8, port_num);
 		}
 		else {
-			// printk(" GS705A phy init for xhci %s\n", __TIME__ );
-			printk(" GS705A phy init for xhci \n");
+			printk(" GS705A phy init for xhci %s\n", __TIME__ );
 			val_u8 =(1<<7) |(1<<5)|(1<<4)|(2<<2)|(3<<0);//select page1
 			setphy(0xf4, val_u8, port_num);
 			val_u8 =(1<<5) |(1<<4)|(0<<3)|(1<<2)|(1<<0);//negative sample
