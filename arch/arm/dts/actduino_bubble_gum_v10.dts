@@ -322,10 +322,10 @@
 			cmu_dsipll_clk = <0x12601>;
 		};
 		
-		dsi_mode:mode@800x1280p60 {
+		dsi_mode:mode@1080x1920p60 {
 			refresh = <60>;
-			xres = <1280>;
-			yres = <800>;
+			xres = <1080>;
+			yres = <1920>;
 			/*in pico second, 0.000 000 000 001s*/
 			pixclock = <15000>;
 			left_margin = <10>;
