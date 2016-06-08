@@ -25,7 +25,7 @@
 	"fdt_high=0xffffffff\0"				\
 	"initrd_high=0xffffffff\0"			\
 	"scriptaddr=0x04400000\0" \
-	"bootenv=uboot.env\0" \
+	"bootenv=uEnv.txt\0" \
 	"bootscr=boot.scr\0" \
 	"console=ttyS2,115200\0" \
 	"loglevel=7\0" \
@@ -61,8 +61,6 @@
 		"run nandargs; run setbootenv\0"		\
 	"ramboot=bootm ${kernel_addr_r} ${ramdisk_addr_r} ${fdt_addr_r}\0"
 
-
-#define CONFIG_SUPPORT_RAW_INITRD
 
 #define CONFIG_SYS_HZ            1000
 
