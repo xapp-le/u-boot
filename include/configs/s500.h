@@ -7,6 +7,8 @@
 #ifndef __CONFIG_S500_H
 #define __CONFIG_S500_H
 
+#include <linux/sizes.h>
+
 #define CONFIG_BOOTCOMMAND "run ramboot;"
 
 #define CONFIG_EXTRA_ENV_SETTINGS			\
@@ -158,7 +160,7 @@
 #define CONFIG_OWL_SPI
 
 
-#define CONFIG_ENV_IS_IN_MMC
+#define CONFIG_ENV_IS_IN_FAT
 
 /* Do not preserve environment */
 #if defined(CONFIG_ENV_IS_IN_MMC) && defined(CONFIG_MMC)
@@ -168,7 +170,7 @@
 #define CONFIG_ENV_OFFSET_REDUND	(CONFIG_ENV_OFFSET + CONFIG_ENV_SIZE)
 #define CONFIG_SYS_REDUNDAND_ENVIRONMENT
 #elif defined(CONFIG_ENV_IS_IN_FAT)
-#define CONFIG_ENV_SIZE			(128 << 10)
+#define CONFIG_ENV_SIZE			SZ_128K
 #define FAT_ENV_INTERFACE		"mmc"
 #define FAT_ENV_DEVICE_AND_PART	"1:1"
 #define FAT_ENV_FILE			"uboot.env"
@@ -289,6 +291,7 @@
 #define CONFIG_SYS_RECOVERY_LOGO_NAME		"recovery_logo.bmp.gz"
 #define CONFIG_SYS_CHARGER_FRAME_NAME		"charger_frame.bmp.gz"
 #define CONFIG_SYS_CONSOLE_IS_IN_ENV
+#define CONFIG_SYS_REDUNDAND_ENVIRONMENT
 #define CONFIG_CONSOLE_MUX
 #define CONFIG_OWL_DISPLAY_LCD
 #define CONFIG_OWL_DISPLAY_DSI
