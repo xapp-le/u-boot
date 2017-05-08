@@ -172,7 +172,7 @@
 #elif defined(CONFIG_ENV_IS_IN_FAT)
 #define CONFIG_ENV_SIZE			SZ_128K
 #define FAT_ENV_INTERFACE		"mmc"
-#define FAT_ENV_DEVICE_AND_PART	"1:1"
+#define FAT_ENV_DEVICE_AND_PART	"0:1"
 #define FAT_ENV_FILE			"uboot.env"
 #elif defined(CONFIG_ENV_IS_IN_SPI_FLASH)
 #define CONFIG_ENV_OFFSET		0x140000
